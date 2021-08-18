@@ -1,7 +1,7 @@
 import axios from "axios";
 import get from "lodash/get";
 import * as Sentry from "@sentry/browser";
-import config from "config";
+import config from "../../config";
 import storage from "../storage";
 
 const request = axios.create({
