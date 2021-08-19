@@ -1,14 +1,14 @@
 import React, { lazy, Suspense } from "react";
 import { Router, Route, Switch } from "react-router-dom";
-
+import { history } from "./store";
 import App from "./App";
 
 const Home = lazy(() => import("./pages/Home"));
 
 const routes = [{ path: "/", exact: true, component: Home }];
 
-export default () => (
-	<Router>
+const Routes = () => (
+	<Router {...{ history }}>
 		<App>
 			<Suspense fallback={""}>
 				<Switch>
@@ -25,3 +25,5 @@ export default () => (
 		</App>
 	</Router>
 );
+
+export default Routes;

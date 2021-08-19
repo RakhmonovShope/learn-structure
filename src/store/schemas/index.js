@@ -1,8 +1,11 @@
 import requireContext from "require-context.macro";
-import { importAll } from "store/utils";
+import { importAll } from "../../utils";
 
-const schemas = importAll(requireContext("../../modules", true, /\/schema.js$/), "schema.js");
+const schemas = importAll(
+	requireContext("../../modules", true, /\/schema.js$/),
+	"schema.js"
+);
 
 export default {
-  ...schemas
+	...schemas
 };

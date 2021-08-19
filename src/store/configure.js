@@ -6,22 +6,31 @@ import rootSaga from "./sagas";
 
 import middlewares, { sagaMiddleware } from "./middlewares";
 
-export default (initialState = {}) => {
-  let store;
+const configure = (initialState = {}) => {
+	let store;
 
-  if (process.env.NODE_ENV === "production") {
-    store = createStore(rootReducer, initialState, compose(applyMiddleware(...middlewares)));
-  } else {
-    store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middlewares)));
-  }
+	if (process.env.NODE_ENV === "production") {
+		store = createStore(
+			rootReducer,
+			initialState,
+			compose(applyMiddleware(...middlewares))
+		);
+	} else {
+		store = createStore(
+			rootReducer,
+			composeWithDevTools(applyMiddleware(...middlewares))
+		);
+	}
 
-  sagaMiddleware.run(rootSaga);
+	sagaMiddleware.run(rootSaga);
 
-  if (module.hot) {
-    module.hot.accept("./reducers", () => {
-      store.replaceReducer(require("./reducers/index").default);
-    });
-  }
+	if (module.hot) {
+		module.hot.accept("./reducers", () => {
+			store.replaceReducer(require("./reducers/index").default);
+		});
+	}
 
-  return store;
+	return store;
 };
+
+export default configure;

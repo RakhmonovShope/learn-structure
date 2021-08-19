@@ -8,6 +8,7 @@
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
 		"axios": "^0.21.1",
+		"cross-env": "^7.0.3",
 		"history": "^5.0.1",
 		"i18next": "^20.4.0",
 		"i18next-xhr-backend": "^3.2.2",
@@ -26,16 +27,19 @@
 		"react-scripts": "4.0.3",
 		"react-toastify": "^7.0.4",
 		"redux": "^4.1.1",
+		"redux-devtools-extension": "^2.13.9",
+		"redux-logger": "^3.0.6",
 		"redux-saga": "^1.1.3",
+		"redux-saga-routines": "^3.2.3",
 		"require-context.macro": "^1.2.2",
 		"sentry": "^0.1.2",
 		"web-vitals": "^1.0.1"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"start": "cross-env NODE_ENV=development react-scripts start",
+		"build": "cross-env NODE_ENV=production react-scripts build",
+		"build-develop": "cp ./.env.develop .env && cross-env NODE_ENV=production CI=false react-scripts build",
+		"build-master": "cp ./.env.master .env && cross-env NODE_ENV=production CI=false react-scripts build"
 	},
 	"eslintConfig": {
 		"extends": [

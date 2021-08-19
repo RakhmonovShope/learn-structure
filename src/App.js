@@ -1,7 +1,7 @@
 import React from "react";
 
-function App() {
-	return <div className='App'></div>;
+function App({ children }) {
+	return <div className='App'>{children}</div>;
 }
 
 export default App;
