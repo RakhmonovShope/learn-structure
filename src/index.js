@@ -15,7 +15,6 @@ const store = configureStore();
 store.subscribe(() => {
 	api.subscribe(store);
 });
-console.log(process.env);
 const render = Component => {
 	ReactDOM.render(
 		<Provider {...{ store }}>
