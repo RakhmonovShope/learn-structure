@@ -3,12 +3,13 @@ import { Modal } from "components";
 
 const Home = () => {
 	const [open, setOpen] = useState(false);
+
 	return (
 		<>
-			<div className='home' onClick={() => setOpen(true)}>
+			<div className='home' onClick={() => setOpen(!open)}>
 				Home Page
 			</div>
-			<Modal>Modal</Modal>
+			<Modal isOpen={open}>Modal</Modal>
 		</>
 	);
 };
